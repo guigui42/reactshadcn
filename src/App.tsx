@@ -1,11 +1,11 @@
-import { useState } from 'react'
 import { Card, Image, Text, Badge,AppShell, Burger, useMantineColorScheme, Group, Button } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
+import { useDisclosure ,useCounter} from '@mantine/hooks';
 
 function App() {
-  const [count, setCount] = useState(0)
+  
   const { setColorScheme, clearColorScheme } = useMantineColorScheme();
   const [opened, { toggle }] = useDisclosure();
+  const [count, handlers] = useCounter(0, { min: 0, max: 10 });
 
   return (
     <>
@@ -39,9 +39,6 @@ function App() {
       <Button onClick={clearColorScheme}>Clear</Button>
     </Group>
   
-    <Button variant="filled"  onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </Button>
 
         <Card shadow="sm" padding="lg" radius="md" withBorder>
       <Card.Section>
@@ -66,6 +63,14 @@ function App() {
         Book classic tour now
       </Button>
     </Card>
+
+    <Text>Count: {count}</Text>
+      <Group justify="center">
+        <Button onClick={handlers.increment}>Increment</Button>
+        <Button onClick={handlers.decrement}>Decrement</Button>
+        <Button onClick={handlers.reset}>Reset</Button>
+        <Button onClick={() => handlers.set(5)}>Set 5</Button>
+      </Group>
       </AppShell.Main>
     </AppShell>
   
