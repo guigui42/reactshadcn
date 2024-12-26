@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import { Card, Image, Text, Badge,AppShell, Burger, useMantineColorScheme, Group, Button } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 
